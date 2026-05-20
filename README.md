@@ -60,7 +60,7 @@ Para usar este módulo en otro script del sistema, basta con copiar la carpeta `
 ### 1. Consultas Rápidas (Funciones de Paquete)
 
 ```python
-from renacyt_connector import search_by_dni, search_by_orcid, search_by_name
+from renacyt_connector import search_by_dni, search_by_orcid, search_by_name, search_by_institution
 
 # Buscar por DNI (Retorna un diccionario de investigador o None)
 investigador = search_by_dni("19809928")
@@ -75,6 +75,10 @@ investigador = search_by_orcid("0000-0002-8194-7946")
 # Buscar por Nombres (Retorna un dict con {'total': int, 'data': list})
 resultados = search_by_name("NESTOR GODOFREDO")
 print(f"Encontrados: {resultados['total']}")
+
+# Buscar por Institución Principal Autodeclarada en CTI VITAE (coincidencia parcial)
+resultados_inst = search_by_institution("Universidad Nacional Mayor de San Marcos")
+print(f"Encontrados en San Marcos: {resultados_inst['total']}")
 ```
 
 ### 2. Uso Avanzado con Cliente Configurado (`RenacytConnector`)
@@ -125,6 +129,7 @@ Ejecute la suite de comandos desde la terminal utilizando `python -m renacyt_con
 | `-o, --orcid` | Consulta exacta de investigador por ID ORCID. |
 | `-c, --code` | Consulta exacta de investigador por Código RENACYT. |
 | `-n, --name` | Búsqueda parcial de investigadores por nombres o apellidos. |
+| `-i, --institution` | Búsqueda parcial de investigadores por institución principal autodeclarada en CTI VITAE (coincidencia parcial). |
 | `-p, --page` | Número de página a retornar (por defecto: `1`). |
 | `-l, --limit` | Registros por página a retornar (por defecto: `10`). |
 | `-f, --format` | Formato de salida: `json`, `json-compact`, o `csv` (por defecto: `json`). |
@@ -153,4 +158,9 @@ python -m renacyt_connector --orcid 0000-0002-8194-7946 --delay 0 --format json-
 #### 4. Búsqueda de nombres paginada con logs informativos
 ```bash
 python -m renacyt_connector --name "GODOFREDO" --page 2 --limit 5 --verbose
+```
+
+#### 5. Búsqueda por institución principal autodeclarada en CTI VITAE
+```bash
+python -m renacyt_connector --institution "Universidad Nacional Mayor de San Marcos" --limit 5
 ```
