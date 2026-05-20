@@ -1,0 +1,46 @@
+# Entornos virtuales (Virtual Environments)
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Caché de Python y archivos compilados
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Configuraciones de editores / IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de configuración local y credenciales (SECRETOS)
+.env
+*.env
+config.local.json
+secrets.json
+*.pem
+*.key
+
+# Bases de datos locales o archivos temporales de datos
+*.db
+*.sqlite
+*.log
+
+requisitos.md
